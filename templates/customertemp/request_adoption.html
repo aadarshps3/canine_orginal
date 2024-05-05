@@ -1,0 +1,11 @@
+{% extends 'customertemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Confirm Adoption</h1>
+    <p>Are you sure you want to adopt {{ sell.name }}?</p>
+    <form action="{% url 'request_adoption' sell.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Adopt</button>
+        <a href="{% url 'sell_list' %}">No, Go Back</a>
+    </form>
+{% endblock %}

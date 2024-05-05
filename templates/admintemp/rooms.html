@@ -1,0 +1,29 @@
+{% extends 'admintemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Boarding rooms</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Room Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Amount(Based on Hour)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.room_type}}</td>
+                    <td>{{i.description}}</td>
+                    <td>Rs.{{i.amount}}(<small>inc.GST</small>)</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'customertemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5 mb-4">Available Dogs for Sale</h1>
+        <div class="row">
+            {% for dog in dogs %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ dog.image.url }}" class="card-img-top" alt="{{ dog.name }}" height="250px">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ dog.name }}</h2>
+                        <p class="card-text">Breed: {{ dog.breed }}</p>
+                        <p class="card-text">Age: {{ dog.age }}</p>
+                        <p class="card-text">Description: {{ dog.description }}</p>
+                        <p class="card-text">Seller: {{ dog.seller }}</p>
+<!--                        <p class="card-text"><a href="{% url 'adopt' %}">Adopt</a></p>-->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

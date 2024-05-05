@@ -1,0 +1,37 @@
+{% extends 'stafftemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Boardings</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Room Preference</th>
+                    <th scope="col">Special Requirements</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <th scope="row">{{ i.customer }}</th>
+                    <td>{{i.start_date}}</td>
+                    <td>{{i.end_date}}</td>
+                    <td>{{i.room_preference}}</td>
+                    <td>{{i.special_requirements}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a style="color:blue; text-decoration:none;font-size:25px;"
+                        href="{% url 'boarding-assigned-update' i.id  %}">&#9998;</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

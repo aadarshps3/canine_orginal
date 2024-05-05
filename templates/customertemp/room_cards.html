@@ -1,0 +1,40 @@
+{% extends 'customertemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    /* Customize your styles here */
+    .room-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        height: 250px; /* Set a fixed height for consistent card sizes */
+    }
+    .room-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    .room-description {
+        color: #777;
+    }
+    .room-price {
+        font-size: 1.1rem;
+        color: #007bff;
+    }
+</style>
+<h1 class="mb-4">Boarding Rooms</h1>
+<small>Room charges are displayed here on per day basis</small>
+<div class="row">
+{% for room in rooms %}
+            <div class="col-md-4">
+                <div class="card room-card">
+                    <div class="card-body">
+                        <h5 class="card-title room-title">{{ room.room_type }}</h5>
+                        <p class="card-text room-description">{{ room.description }}</p>
+                        <p class="card-text room-price">Rs.{{ room.amount }}(<small>inc.GST</small>)</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}
